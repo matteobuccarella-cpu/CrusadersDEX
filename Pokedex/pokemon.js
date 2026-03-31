@@ -1,9 +1,9 @@
 const allPokemon = [
   {
     id: 1,
-    name: "Flexape",
+    name: "flexape", // 👈 minuscolo
     types: ["lotta"],
-    image: "images/Flexape.jpeg",
+    image: "images/flexape.jpeg", // 👈 minuscolo
     stats: {
       hp: 50,
       attack: 70,
