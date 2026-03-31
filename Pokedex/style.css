@@ -113,3 +113,14 @@ input, select {
 .card.flying { background: #89f7fe; }
 .card.steel { background: #bdc3c7; }
 .card.ghost { background: #5f2c82; color: white; }
+
+.arrow {
+  display: inline-block;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
