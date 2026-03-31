@@ -3,6 +3,7 @@ const id = parseInt(params.get("id"));
 
 const data = allPokemon.find(p => p.id === id);
 const statsDiv = document.getElementById("stats");
+
 const typeMap = {
   lotta: "fighting",
   fuoco: "fire",
@@ -17,7 +18,7 @@ const typeMap = {
   terra: "ground",
   roccia: "rock",
   drago: "dragon",
-  coleottero: "bug",
+  insetto: "bug",
   veleno: "poison",
   normale: "normal",
   folletto: "fairy",
@@ -25,33 +26,9 @@ const typeMap = {
 };
 
 
-document.getElementById("name").textContent = data.name;
-document.getElementById("id").textContent = "#" + data.id;
-document.getElementById("img").src = data.image;
-
-// tipi
-const typesDiv = document.getElementById("types");
-data.types.forEach(type => {
-  const span = document.createElement("span");
-  span.textContent = type; // italiano visibile
-  span.classList.add("type", typeMap[type] || type);
-  typesDiv.appendChild(span);
-});
-
-for (let stat in data.stats) {
-  const value = data.stats[stat];
-
-  const statEl = document.createElement("div");
-  statEl.classList.add("stat");
-
-  statEl.innerHTML = `
-    <p>${formatStatName(stat)}: ${value}</p>
-    <div class="bar">
-      <div class="fill" style="width: ${value}%"></div>
-    </div>
-  `;
-
-  statsDiv.appendChild(statEl);
+// 🧠 UTILS
+function capitalize(text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
 function formatStatName(stat) {
@@ -63,7 +40,68 @@ function formatStatName(stat) {
     sp_defense: "Difesa Sp.",
     speed: "Velocità"
   };
+  return names[stat] || stat;
+}
 
+function getStatColor(value) {
+  if (value < 40) return "#ff4d4d";
+  if (value < 70) return "#ffa500";
+  if (value < 100) return "#4caf50";
+  return "#4da6ff";
+}
+
+
+// 🧾 DATI BASE
+document.getElementById("name").textContent = capitalize(data.name);
+document.getElementById("id").textContent = "#" + data.id;
+document.getElementById("img").src = data.image;
+
+
+// 🎨 TIPI
+const typesDiv = document.getElementById("types");
+
+data.types.forEach(type => {
+  const span = document.createElement("span");
+  span.textContent = capitalize(type);
+  span.classList.add("type", typeMap[type] || type);
+  typesDiv.appendChild(span);
+});
+
+
+// 📊 STATS
+for (let stat in data.stats) {
+  const value = data.stats[stat];
+
+  const statEl = document.createElement("div");
+  statEl.classList.add("stat");
+
+  statEl.innerHTML = `
+    <p>${formatStatName(stat)}: ${value}</p>
+    <div class="bar">
+      <div class="fill" style="width: 0%; background: ${getStatColor(value)}"></div>
+    </div>
+  `;
+
+  statsDiv.appendChild(statEl);
+}
+
+
+// ⚡ ANIMAZIONE BARRE
+setTimeout(() => {
+  const fills = document.querySelectorAll(".fill");
+
+  fills.forEach((fill, index) => {
+    const value = Object.values(data.stats)[index];
+
+    setTimeout(() => {
+      fill.style.width = value + "%";
+    }, index * 120);
+  });
+}, 100);
+
+
+// 📝 DESCRIZIONE
+document.getElementById("description").textContent = data.description;
   return names[stat] || stat;
 }
 
