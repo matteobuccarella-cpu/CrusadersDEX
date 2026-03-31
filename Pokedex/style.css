@@ -22,6 +22,25 @@ input, select {
   padding: 20px;
 }
 
+#suggestions {
+  position: absolute;
+  background: white;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 5px;
+  z-index: 100;
+}
+
+.suggestion-item {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background: #f0f0f0;
+}
+
 .card {
   background: white;
   border-radius: 20px;
