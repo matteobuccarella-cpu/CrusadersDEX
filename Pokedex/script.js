@@ -189,3 +189,9 @@ sortSelect.addEventListener("change", applyFilters);
 
 // 🚀 AVVIO
 populateTypes();
+
+document.addEventListener("click", (e) => {
+  if (!suggestionsBox.contains(e.target) && e.target !== searchInput) {
+    suggestionsBox.innerHTML = "";
+  }
+});
