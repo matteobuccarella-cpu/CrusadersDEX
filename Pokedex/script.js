@@ -108,3 +108,4 @@ typeFilter.addEventListener("change", applyFilters);
 sortSelect.addEventListener("change", applyFilters);
 
 // AVVIO
+renderPokemon(allPokemon);
