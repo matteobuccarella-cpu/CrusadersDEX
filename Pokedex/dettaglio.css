@@ -1,0 +1,110 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #f5f7fb, #e0e7ff);
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  margin: 20px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  background: #4f46e5;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background: #4338ca;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  margin: 20px auto;
+  border-radius: 25px;
+  width: 350px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+h1 {
+  margin-bottom: 5px;
+}
+
+#id {
+  color: gray;
+  margin-bottom: 15px;
+}
+
+img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+/* TIPI */
+
+.type {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 15px;
+  color: white;
+  margin: 5px;
+  font-size: 14px;
+}
+
+.stat {
+  margin: 10px 0;
+  text-align: left;
+}
+
+.bar {
+  height: 10px;
+  background: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: #4caf50;
+  border-radius: 10px;
+  transition: width 0.5s;
+}
+
+/* Colori tipi */
+
+.fire { background: #ff1635; }
+.water { background: #0047b2; }
+.grass { background: #37a038; }
+.electric { background: #e0f433; color: black; }
+.fighting { background: #c25a34; }
+.poison { background: #a038b1; }
+.ground { background: #be9f61; color: black; }
+.flying { background: #cceefa; }
+.psychic { background: #e90f7b; }
+.bug { background: #d3df6f; }
+.rock { background: #5f4f30; }
+.ghost { background: #443466; }
+.dark { background: #201b1b; }
+.dragon { background: #441f33; }
+.steel { background: #828597; color: black; }
+.fairy { background: #fbbdf5; }
+
+/* GRAFICO */
+
+canvas {
+  margin-top: 20px;
+}
+
+/* DESCRIZIONE */
+
+#description {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #333;
+}
