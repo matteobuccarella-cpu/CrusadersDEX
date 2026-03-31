@@ -1,8 +1,13 @@
 const id = parseInt(window.location.hash.replace("#", ""));
 console.log("ID:", id);
-console.log("Pokemon trovati:", allPokemon);
 
 const data = allPokemon.find(p => p.id === id);
+
+if (!data) {
+  document.body.innerHTML = "<h1>Pokémon non trovato 😢</h1>";
+  throw new Error("Pokemon non trovato");
+}
+
 const statsDiv = document.getElementById("stats");
 
 const typeMap = {
@@ -103,8 +108,4 @@ setTimeout(() => {
 
 // 📝 DESCRIZIONE
 document.getElementById("description").textContent = data.description;
-  return names[stat] || stat;
-}
 
-// descrizione
-document.getElementById("description").textContent = data.description;
