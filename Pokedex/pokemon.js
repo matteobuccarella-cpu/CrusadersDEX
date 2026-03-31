@@ -29,4 +29,19 @@ const allPokemon = [
     },
     description: "Adora cucinare e arrabbiarsi, una combo pericolosa con delle padelle roventi in mano"
   },
+{
+    id: 3,
+    name: "gorillhate", // 👈 minuscolo
+    types: ["lotta", "fuoco"],
+    image: "images/gorillhate.jpeg", // 👈 minuscolo
+    stats: {
+      hp: 88,
+      attack: 104,
+      defense: 65,
+      sp_attack: 40,
+      sp_defense: 60,
+      speed: 50
+    },
+    description: "Ha i pugni nelle mani e il potere dell'odio nel cuore, ma almeno sa cucinare una carbonara fantastica"
+  },
 ];
