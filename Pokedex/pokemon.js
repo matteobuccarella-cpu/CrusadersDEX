@@ -36,11 +36,45 @@ const allPokemon = [
     image: "images/gorillhate.jpeg", // 👈 minuscolo
     stats: {
       hp: 88,
-      attack: 104,
+      attack: 100,
       defense: 65,
       sp_attack: 40,
       sp_defense: 60,
       speed: 50
+    },
+    description: "Ha i pugni nelle mani e il potere dell'odio nel cuore, ma almeno sa cucinare una carbonara fantastica"
+  },
+{
+    id: 4,
+    name: "vessilly", // 👈 minuscolo
+    types: ["buio", "folletto"],
+    image: "images/vessilly.jpeg", // 👈 minuscolo
+    stats: {
+      hp: 60,
+      attack: 40,
+      defense: 45,
+      sp_attack: 70,
+      sp_defense: 50,
+      speed: 55
+    },
+    description: "Non lasciatevi incantare dai suoi modi graziosi, o potrebbe essere l'ultima cosa che vedrete"
+  },
+{
+    id: 5,
+    name: "vessalia", // 👈 minuscolo
+    types: ["lotta", "fuoco"],
+    image: "images/gorillhate.jpeg", // 👈 minuscolo
+    stats: {
+      hp: 75,
+      attack: 45,
+      defense: 50,
+      sp_attack: 90,
+      sp_defense: 70,
+      speed: 65
+    },
+    description: "Secondo le leggende, appare in sogno agli uomini giusti per ispirarli e ai malfattori per tormentarli"
+  },
+];
     },
     description: "Ha i pugni nelle mani e il potere dell'odio nel cuore, ma almeno sa cucinare una carbonara fantastica"
   },
