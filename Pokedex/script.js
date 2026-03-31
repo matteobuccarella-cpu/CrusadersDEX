@@ -178,7 +178,11 @@ function showSuggestions(value) {
 }
 
 // 🎧 EVENTI
-searchInput.addEventListener("input", applyFilters);
+searchInput.addEventListener("input", () => {
+  const value = searchInput.value.toLowerCase();
+  applyFilters();
+  showSuggestions(value);
+});
 typeFilter.addEventListener("change", applyFilters);
 sortSelect.addEventListener("change", applyFilters);
 
