@@ -2,7 +2,7 @@ const allPokemon = [
   {
     id: 1,
     name: "Flexape",
-    types: ["Lotta"],
+    types: ["lotta"],
     image: "images/Flexape.jpeg",
     stats: {
       hp: 50,
