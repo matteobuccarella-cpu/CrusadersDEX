@@ -1,5 +1,7 @@
 const params = new URLSearchParams(window.location.search);
-const id = parseInt(params.get("id"));
+const id = parseInt(params.get("id")) || 1;
+console.log("ID:", id);
+console.log("Pokemon trovati:", allPokemon);
 
 const data = allPokemon.find(p => p.id === id);
 const statsDiv = document.getElementById("stats");
