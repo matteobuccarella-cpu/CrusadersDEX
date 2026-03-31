@@ -1,6 +1,10 @@
 const pokedex = document.getElementById("pokedex");
 const searchInput = document.getElementById("search");
 const typeFilter = document.getElementById("typeFilter");
+const sortSelect = document.getElementById("sort");
+const startMessage = document.getElementById("startMessage");
+const noResults = document.getElementById("noResults");
+
 const typeMap = {
   lotta: "fighting",
   fuoco: "fire",
@@ -15,16 +19,34 @@ const typeMap = {
   terra: "ground",
   roccia: "rock",
   drago: "dragon",
-  coleottero: "bug",
+  insetto: "bug",
   veleno: "poison",
   normale: "normal",
   folletto: "fairy",
   acciaio: "steel"
 };
-const sortSelect = document.getElementById("sort");
 
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
+
+// 🔥 TUTTI I TIPI (fissi)
+function populateTypes() {
+  const allTypes = [
+    "normale", "fuoco", "acqua", "erba", "elettro", "ghiaccio",
+    "lotta", "veleno", "terra", "volante", "psico", "insetto",
+    "roccia", "spettro", "drago", "buio", "acciaio", "folletto"
+  ];
+
+  allTypes.forEach(type => {
+    const option = document.createElement("option");
+    option.value = type;
+    option.textContent = capitalize(type);
+    typeFilter.appendChild(option);
+  });
+}
+
+
+// 🎨 RENDER
 function renderPokemon(list) {
   pokedex.innerHTML = "";
 
@@ -40,12 +62,13 @@ function renderPokemon(list) {
     img.src = data.image;
 
     const title = document.createElement("h3");
-    title.textContent = data.name;
+    title.textContent = capitalize(data.name);
 
     const types = document.createElement("div");
+
     data.types.forEach(type => {
       const span = document.createElement("span");
-      span.textContent = type; // italiano visibile
+      span.textContent = capitalize(type);
       span.classList.add("type", typeMap[type] || type);
       types.appendChild(span);
     });
@@ -77,22 +100,42 @@ function renderPokemon(list) {
   });
 }
 
+
+// ⭐ PREFERITI
 function updateFavStyle(btn, id) {
   btn.style.color = favorites.includes(id) ? "gold" : "gray";
 }
 
+
+// 🔍 FILTRI
 function applyFilters() {
   const searchValue = searchInput.value.toLowerCase();
   const selectedType = typeFilter.value;
   const sortValue = sortSelect.value;
 
+  if (searchValue === "" && selectedType === "") {
+    pokedex.innerHTML = "";
+    startMessage.style.display = "block";
+    noResults.style.display = "none";
+    return;
+  }
+
+  startMessage.style.display = "none";
+
   let filtered = allPokemon.filter(p => {
-    const matchesName = p.name.includes(searchValue);
-    const matchesType = selectedType === "" ||
-      p.types.includes(selectedType);
+    const matchesName = p.name.toLowerCase().includes(searchValue);
+    const matchesType = selectedType === "" || p.types.includes(selectedType);
 
     return matchesName && matchesType;
   });
+
+  if (filtered.length === 0) {
+    pokedex.innerHTML = "";
+    noResults.style.display = "block";
+    return;
+  } else {
+    noResults.style.display = "none";
+  }
 
   if (sortValue === "name") {
     filtered.sort((a, b) => a.name.localeCompare(b.name));
@@ -103,9 +146,18 @@ function applyFilters() {
   renderPokemon(filtered);
 }
 
+
+// 🔠 UTILS
+function capitalize(text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+
+// 🎧 EVENTI
 searchInput.addEventListener("input", applyFilters);
 typeFilter.addEventListener("change", applyFilters);
 sortSelect.addEventListener("change", applyFilters);
 
-// AVVIO
-renderPokemon(allPokemon);
+
+// 🚀 AVVIO
+populateTypes();
