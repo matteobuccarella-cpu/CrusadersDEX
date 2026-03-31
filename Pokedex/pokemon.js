@@ -62,7 +62,7 @@ const allPokemon = [
 {
     id: 5,
     name: "vessalia", // 👈 minuscolo
-    types: ["lotta", "fuoco"],
+    types: ["buio", "folletto"],
     image: "images/gorillhate.jpeg", // 👈 minuscolo
     stats: {
       hp: 75,
