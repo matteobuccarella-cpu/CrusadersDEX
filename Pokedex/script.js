@@ -3,6 +3,7 @@ const searchInput = document.getElementById("search");
 const typeFilter = document.getElementById("typeFilter");
 const sortSelect = document.getElementById("sort");
 const startMessage = document.getElementById("startMessage");
+const suggestionsBox = document.getElementById("suggestions");
 const noResults = document.getElementById("noResults");
 
 const typeMap = {
