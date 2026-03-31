@@ -55,8 +55,8 @@ function renderPokemon(list) {
     div.classList.add("card");
 
     div.addEventListener("click", () => {
-      window.location.href = `dettaglio.html?id=${data.id}`;
-    });
+  window.location.href = `dettaglio.html#${data.id}`;
+});
 
     const img = document.createElement("img");
     img.src = data.image;
