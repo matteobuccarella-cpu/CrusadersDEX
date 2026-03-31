@@ -155,6 +155,27 @@ function capitalize(text) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
+function showSuggestions(value) {
+  suggestionsBox.innerHTML = "";
+
+  if (value.length < 2) return;
+
+  const filtered = allPokemon.filter(p =>
+    p.name.toLowerCase().includes(value)
+  );
+
+  filtered.slice(0, 5).forEach(p => {
+    const div = document.createElement("div");
+    div.classList.add("suggestion-item");
+    div.textContent = capitalize(p.name);
+
+    div.addEventListener("click", () => {
+      window.location.href = `dettaglio.html#${p.id}`;
+    });
+
+    suggestionsBox.appendChild(div);
+  });
+}
 
 // 🎧 EVENTI
 searchInput.addEventListener("input", applyFilters);
