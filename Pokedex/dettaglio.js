@@ -1,4 +1,3 @@
-const params = new URLSearchParams(window.location.search);
 const id = parseInt(window.location.hash.replace("#", ""));
 console.log("ID:", id);
 console.log("Pokemon trovati:", allPokemon);
