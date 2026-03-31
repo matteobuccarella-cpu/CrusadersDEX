@@ -75,3 +75,22 @@ input, select {
   font-size: 18px;
   cursor: pointer;
 }
+/* 🎨 CARD COLORATE PER TIPO */
+.card.fire { background: linear-gradient(135deg, #ff9a9e, #ff6a6a); }
+.card.water { background: linear-gradient(135deg, #a1c4fd, #2196f3); }
+.card.grass { background: linear-gradient(135deg, #c2e59c, #4caf50); }
+.card.electric { background: linear-gradient(135deg, #fddb92, #fbc02d); }
+.card.fighting { background: linear-gradient(135deg, #f6d365, #fda085); }
+.card.psychic { background: linear-gradient(135deg, #fbc2eb, #e91e63); }
+.card.ice { background: linear-gradient(135deg, #d4fc79, #96e6a1); }
+.card.dragon { background: linear-gradient(135deg, #a18cd1, #673ab7); }
+.card.dark { background: linear-gradient(135deg, #434343, #000000); color: white; }
+.card.fairy { background: linear-gradient(135deg, #ffdde1, #ee9ca7); }
+.card.normal { background: #ddd; }
+.card.rock { background: #c79081; }
+.card.ground { background: #e6b980; }
+.card.poison { background: #a18cd1; }
+.card.bug { background: #cddc39; }
+.card.flying { background: #89f7fe; }
+.card.steel { background: #bdc3c7; }
+.card.ghost { background: #5f2c82; color: white; }
