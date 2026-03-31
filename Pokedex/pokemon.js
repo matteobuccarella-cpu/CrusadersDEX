@@ -13,7 +13,7 @@ const allPokemon = [
       speed: 50
     },
     description: "Mena le mani con allegria seguendo il ritmo della canzone che ha nelle cuffie"
-  }
+  },
 {
     id: 2,
     name: "chefurious", // 👈 minuscolo
@@ -28,5 +28,5 @@ const allPokemon = [
       speed: 50
     },
     description: "Adora cucinare e arrabbiarsi, una combo pericolosa con delle padelle roventi in mano"
-  }
+  },
 ];
