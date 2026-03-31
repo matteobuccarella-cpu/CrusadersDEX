@@ -53,6 +53,8 @@ function renderPokemon(list) {
   list.forEach(data => {
     const div = document.createElement("div");
     div.classList.add("card");
+    const mainType = data.types[0];
+    div.classList.add(typeMap[mainType] || mainType);
 
     div.addEventListener("click", () => {
   window.location.href = `dettaglio.html#${data.id}`;
