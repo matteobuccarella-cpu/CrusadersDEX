@@ -24,7 +24,7 @@ const typeMap = {
   terra: "ground",
   roccia: "rock",
   drago: "dragon",
-  insetto: "bug",
+  coleottero: "bug",
   veleno: "poison",
   normale: "normal",
   folletto: "fairy",
