@@ -20,7 +20,7 @@ const typeMap = {
   terra: "ground",
   roccia: "rock",
   drago: "dragon",
-  insetto: "bug",
+  coleottero: "bug",
   veleno: "poison",
   normale: "normal",
   folletto: "fairy",
@@ -34,7 +34,7 @@ let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 function populateTypes() {
   const allTypes = [
     "normale", "fuoco", "acqua", "erba", "elettro", "ghiaccio",
-    "lotta", "veleno", "terra", "volante", "psico", "insetto",
+    "lotta", "veleno", "terra", "volante", "psico", "coleottero",
     "roccia", "spettro", "drago", "buio", "acciaio", "folletto"
   ];
 
