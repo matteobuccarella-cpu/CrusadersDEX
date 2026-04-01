@@ -123,7 +123,7 @@ const allPokemon = [
     id: 9,
     name: "frostound", // 👈 minuscolo
     types: ["terra", "ghiaccio"],
-    image: "images/frostound.png", // 👈 minuscolo
+    image: "images/frostound.jpeg", // 👈 minuscolo
     stats: {
       hp: 80,
       attack: 75,
