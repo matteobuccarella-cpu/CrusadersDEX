@@ -28,9 +28,10 @@ const typeMap = {
 };
 
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+let hasInteracted = false;
 
 
-// 🔥 TUTTI I TIPI (fissi)
+// 🔥 TUTTI I TIPI
 function populateTypes() {
   const allTypes = [
     "normale", "fuoco", "acqua", "erba", "elettro", "ghiaccio",
@@ -54,12 +55,13 @@ function renderPokemon(list) {
   list.forEach(data => {
     const div = document.createElement("div");
     div.classList.add("card");
+
     const mainType = data.types[0];
     div.classList.add(typeMap[mainType] || mainType);
 
     div.addEventListener("click", () => {
-  window.location.href = `dettaglio.html#${data.id}`;
-});
+      window.location.href = `dettaglio.html#${data.id}`;
+    });
 
     const img = document.createElement("img");
     img.src = data.image;
@@ -116,7 +118,8 @@ function applyFilters() {
   const selectedType = typeFilter.value;
   const sortValue = sortSelect.value;
 
-  if (searchValue === "" && selectedType === "") {
+  // 👇 LOGICA CORRETTA
+  if (searchValue === "" && selectedType === "" && !hasInteracted) {
     pokedex.innerHTML = "";
     startMessage.style.display = "block";
     noResults.style.display = "none";
@@ -128,7 +131,6 @@ function applyFilters() {
   let filtered = allPokemon.filter(p => {
     const matchesName = p.name.toLowerCase().includes(searchValue);
     const matchesType = selectedType === "" || p.types.includes(selectedType);
-
     return matchesName && matchesType;
   });
 
@@ -155,6 +157,8 @@ function capitalize(text) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
+
+// 🔎 AUTOCOMPLETE
 function showSuggestions(value) {
   suggestionsBox.innerHTML = "";
 
@@ -177,14 +181,29 @@ function showSuggestions(value) {
   });
 }
 
+
 // 🎧 EVENTI
 searchInput.addEventListener("input", () => {
+  hasInteracted = true;
   const value = searchInput.value.toLowerCase();
   applyFilters();
   showSuggestions(value);
 });
-typeFilter.addEventListener("change", applyFilters);
-sortSelect.addEventListener("change", applyFilters);
+
+typeFilter.addEventListener("change", () => {
+  hasInteracted = true;
+  applyFilters();
+});
+
+typeFilter.addEventListener("click", () => {
+  hasInteracted = true;
+  applyFilters();
+});
+
+sortSelect.addEventListener("change", () => {
+  hasInteracted = true;
+  applyFilters();
+});
 
 
 // 🚀 AVVIO
