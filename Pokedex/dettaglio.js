@@ -51,7 +51,90 @@ function loadPokemon(id) {
 
   const card = document.querySelector(".card");
 
-  //  ANIMAZIONE FADE OUT
+  const overall = Object.values(data.stats)
+  .reduce((a, b) => a + b, 0);
+
+  const ctx = document.getElementById("statsChart").getContext("2d");
+
+  if (window.radarChart) {
+  window.radarChart.destroy();
+}
+
+const isDark = data.types[0] === "buio";
+const isFighting = data.types[0] === "lotta";
+const isGhost = data.types[0] === "spettro";
+const isWater = data.types[0] === "acqua";
+
+const labelColor = (isDark || isGhost) ? "#fff" : "#333";
+const gridColor = (isDark || isGhost)
+  ? "rgba(255,255,255,0.2)"
+  : "rgba(0,0,0,0.1)";const borderColor = isFighting ? "#000" : "#333";
+
+const borderWidth = isFighting ? 3 : 1.5;
+
+const textColor = isGhost ? "#fff" : "#000";
+     document.getElementById("description").style.color = textColor;
+     document.querySelectorAll(".stat p").forEach(el => {
+     el.style.color = textColor;
+});
+
+// titolo "Statistiche"
+document.querySelector(".right h2").style.color = textColor;
+
+window.radarChart = new Chart(ctx, {
+  type: "radar",
+  data: {
+    labels: Object.keys(data.stats).map(formatStatName),
+    datasets: [{
+      label: "Stats",
+      data: Object.values(data.stats),
+      fill: true,
+
+   backgroundColor: isWater 
+    ? "rgba(0, 80, 200, 0.4)"   // 🔥 area blu visibile
+    : undefined,
+   borderColor: isWater 
+    ? "#0050c8"                // 🔥 bordo blu scuro
+    : undefined,
+
+        pointRadius: 0,            // ❌ niente pallini
+        pointHoverRadius: 0
+    }]
+  },
+options: {
+  plugins: {
+    legend: {
+      display: false // ❌ rimuove "Stats"
+    }
+  },
+  scales: {
+    r: {
+      beginAtZero: true,
+      max: 100,
+
+      ticks: {
+        display: false // ❌ numeri (HP ecc)
+      },
+
+      grid: {
+    color: gridColor 
+  },
+
+      pointLabels: {
+        color: labelColor,
+        font: {
+          size: 12
+        }
+      }
+    }
+  }
+}
+});
+
+  document.getElementById("overall").innerHTML =
+  `<h3>Overall: ${overall}</h3>`;
+
+//  ANIMAZIONE FADE OUT
   card.style.opacity = "0";
 
   setTimeout(() => {
@@ -61,12 +144,12 @@ function loadPokemon(id) {
     const mainType = data.types[0];
     card.classList.add(typeMap[mainType] || mainType);
 
-    // 🧾 DATI BASE
+// 🧾 DATI BASE
     document.getElementById("name").textContent = capitalize(data.name);
     document.getElementById("id").textContent = "#" + data.id;
     document.getElementById("img").src = data.image;
 
-    // 🎨 TIPI
+// 🎨 TIPI
     const typesDiv = document.getElementById("types");
     typesDiv.innerHTML = "";
 
@@ -83,7 +166,7 @@ function loadPokemon(id) {
       typesDiv.appendChild(span);
     });
 
-    // 📊 STATS
+// 📊 STATS
     const statsDiv = document.getElementById("stats");
     statsDiv.innerHTML = "";
 
@@ -103,7 +186,7 @@ function loadPokemon(id) {
       statsDiv.appendChild(statEl);
     }
 
-    // ⚡ ANIMAZIONE BARRE
+// ⚡ ANIMAZIONE BARRE
     setTimeout(() => {
       const fills = document.querySelectorAll(".fill");
 
