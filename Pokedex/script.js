@@ -26,8 +26,6 @@ const typeMap = {
   folletto: "fairy",
   acciaio: "steel"
 };
-
-let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 let hasInteracted = false;
 
 
@@ -78,39 +76,13 @@ function renderPokemon(list) {
       types.appendChild(span);
     });
 
-    const favBtn = document.createElement("button");
-    favBtn.textContent = "⭐";
-
-    favBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-
-      if (favorites.includes(data.id)) {
-        favorites = favorites.filter(id => id !== data.id);
-      } else {
-        favorites.push(data.id);
-      }
-
-      localStorage.setItem("favorites", JSON.stringify(favorites));
-      updateFavStyle(favBtn, data.id);
-    });
-
-    updateFavStyle(favBtn, data.id);
-
     div.appendChild(title);
     div.appendChild(img);
     div.appendChild(types);
-    div.appendChild(favBtn);
 
     pokedex.appendChild(div);
   });
 }
-
-
-// ⭐ PREFERITI
-function updateFavStyle(btn, id) {
-  btn.style.color = favorites.includes(id) ? "gold" : "gray";
-}
-
 
 // 🔍 FILTRI
 function applyFilters() {
@@ -118,13 +90,7 @@ function applyFilters() {
   const selectedType = typeFilter.value;
   const sortValue = sortSelect.value;
 
-  // 👇 LOGICA CORRETTA
-  if (searchValue === "" && selectedType === "" && !hasInteracted) {
-    pokedex.innerHTML = "";
-    startMessage.style.display = "block";
-    noResults.style.display = "none";
-    return;
-  }
+startMessage.style.display = "none";
 
   startMessage.style.display = "none";
 
@@ -208,6 +174,7 @@ sortSelect.addEventListener("change", () => {
 
 // 🚀 AVVIO
 populateTypes();
+renderPokemon(allPokemon);
 
 document.addEventListener("click", (e) => {
   if (!suggestionsBox.contains(e.target) && e.target !== searchInput) {
