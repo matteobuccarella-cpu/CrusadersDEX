@@ -8,9 +8,9 @@ const allPokemon = [
       hp: 50,
       attack: 65,
       defense: 40,
-      sp_attack: 35,
+      speed: 50,
       sp_defense: 40,
-      speed: 50
+      sp_attack: 35      
     },
     description: "Mena le mani con allegria seguendo il ritmo della canzone che ha nelle cuffie"
   },
@@ -23,9 +23,9 @@ const allPokemon = [
       hp: 60,
       attack: 80,
       defense: 50,
-      sp_attack: 35,
+      speed: 50,
       sp_defense: 50,
-      speed: 50
+      sp_attack: 35
     },
     description: "Adora cucinare e arrabbiarsi, una combo pericolosa con delle padelle roventi in mano"
   },
@@ -35,12 +35,12 @@ const allPokemon = [
     types: ["lotta", "fuoco"],
     image: "images/gorillhate.jpeg", // 👈 minuscolo
     stats: {
-      hp: 88,
+      hp: 85,
       attack: 100,
       defense: 65,
-      sp_attack: 40,
+      speed: 50,
       sp_defense: 60,
-      speed: 50
+      sp_attack: 40
     },
     description: "Ha i pugni nelle mani e il potere dell'odio nel cuore, ma almeno sa cucinare una carbonara fantastica"
   },
@@ -53,9 +53,9 @@ const allPokemon = [
       hp: 60,
       attack: 40,
       defense: 45,
-      sp_attack: 70,
+      speed: 55,
       sp_defense: 50,
-      speed: 55
+      sp_attack: 70
     },
     description: "Non lasciatevi incantare dai suoi modi graziosi, o potrebbe essere l'ultima cosa che vedrete"
   },
@@ -68,9 +68,9 @@ const allPokemon = [
       hp: 75,
       attack: 45,
       defense: 55,
-      sp_attack: 90,
+      speed: 65,
       sp_defense: 70,
-      speed: 65
+      sp_attack: 90
     },
     description: "Secondo le leggende, appare in sogno agli uomini giusti per ispirarli e ai malfattori per tormentarli"
   },
@@ -80,12 +80,12 @@ const allPokemon = [
     types: ["psico"],
     image: "images/psy'in.jpeg", // 👈 minuscolo
     stats: {
-      hp: 60,
+      hp: 90,
       attack: 35,
-      defense: 50,
-      sp_attack: 60,
-      sp_defense: 60,
-      speed: 60
+      defense: 70,
+      speed: 70,
+      sp_defense: 70,
+      sp_attack: 65
     },
     description: "Con la sola forza del pensiero riesce a calmare qualsiasi cuore, tranne il suo"
   },
@@ -95,12 +95,12 @@ const allPokemon = [
     types: ["psico", "fuoco"],
     image: "images/psy'ang.jpeg", // 👈 minuscolo
     stats: {
-      hp: 80,
-      attack: 40,
+      hp: 75,
+      attack: 35,
       defense: 60,
-      sp_attack: 75,
-      sp_defense: 80,
-      speed: 70
+      speed: 70,
+      sp_defense: 85,
+      sp_attack: 75
     },
     description: "Può capitare a molti esploratori di scambiare le sfere psichiche che gli ruotano attorno per delle meteore, a ragion veduta"
   },
@@ -111,11 +111,11 @@ const allPokemon = [
     image: "images/puppit.jpeg", // 👈 minuscolo
     stats: {
       hp: 55,
-      attack: 70,
-      defense: 45,
-      sp_attack: 70,
-      sp_defense: 50,
-      speed: 60
+      attack: 60,
+      defense: 55,
+      speed: 60,
+      sp_defense: 55,
+      sp_attack: 40
     },
     description: "Scalerebbe con gioia anche la cima più impervia durante la più dura delle bufere, se non fosse così occupato a sonnecchiare tutto il tempo"
   },
@@ -123,14 +123,14 @@ const allPokemon = [
     id: 9,
     name: "frostound", // 👈 minuscolo
     types: ["terra", "ghiaccio"],
-    image: "images/frostound.jpeg", // 👈 minuscolo
+    image: "images/frostound.png", // 👈 minuscolo
     stats: {
       hp: 80,
       attack: 75,
       defense: 60,
-      sp_attack: 45,
-      sp_defense: 80,
-      speed: 70
+      speed: 70,
+      sp_defense: 70,
+      sp_attack: 45
     },
     description: "Grazie alla sua stazza rappresenta spesso un tempestivo punto di riferimento per gli esploratori che finiscono vittime del gelo perenne, e si prodiga sempre con gentilezza e abnegazione per aiutare chiunque si trovi in difficoltà"
   },
@@ -143,9 +143,9 @@ const allPokemon = [
       hp: 50,
       attack: 40,
       defense: 45,
-      sp_attack: 65,
+      speed: 60,
       sp_defense: 40,
-      speed: 60
+      sp_attack: 65
     },
     description: "Per lui ogni giorno è halloween, dategli il dolcetto o farete meglio a stare attenti ai suoi scherzetti...  "
   },
@@ -158,9 +158,9 @@ const allPokemon = [
       hp: 60,
       attack: 45,
       defense: 50,
-      sp_attack: 80,
+      speed: 70,
       sp_defense: 45,
-      speed: 70
+      sp_attack: 80
     },
     description: "Quando starnutisce fuoriescono tante saette dalla sua zucca, un motivo come un altro per stare accorti ogni qualvolta vi troviate nelle sue vicinanze"
   },
@@ -172,10 +172,10 @@ const allPokemon = [
     stats: {
       hp: 70,
       attack: 75,
-      defense: 55,
-      sp_attack: 90,
+      defense: 65,
+      speed: 55,
       sp_defense: 45,
-      speed: 85
+      sp_attack: 90
     },
     description: "Probabilmente avrà consumato tutta l'elettricità per integrare elettroliti e altre sostanze dèdite alla massellanza, oppure la pubertà agisce in modo strano nei fantasmi"
   },
@@ -188,9 +188,9 @@ const allPokemon = [
       hp: 50,
       attack: 60,
       defense: 60,
-      sp_attack: 40,
+      speed: 50,
       sp_defense: 45,
-      speed: 60
+      sp_attack: 40
     },
     description: "L'aspetto feroce va in netto constrasto con il suo animo mansueto e un'indomabile pigrizia"
   },
@@ -203,9 +203,9 @@ const allPokemon = [
       hp: 60,
       attack: 75,
       defense: 65,
-      sp_attack: 50,
+      speed: 50,
       sp_defense: 50,
-      speed: 60
+      sp_attack: 50
     },
     description: "Gli studi più recenti affermano che il veleno che permea su tutto il corpo venga prodotto unicamente dalla sua coda, a cui è stato dato un nome di donna"
   },
@@ -218,9 +218,9 @@ const allPokemon = [
       hp: 70,
       attack: 90,
       defense: 65,
-      sp_attack: 70,
+      speed: 50,
       sp_defense: 55,
-      speed: 60
+      sp_attack: 70
     },
     description: "Questo bestione è capace di triturare un masso con le fauci e sciogliere una lega metallica col suo veleno, ma basta lanciargli un pallone e rincoglionisce per ore intere giocandoci appresso"
   },
@@ -233,9 +233,9 @@ const allPokemon = [
       hp: 50,
       attack: 50,
       defense: 50,
-      sp_attack: 50,
+      speed: 50,
       sp_defense: 50,
-      speed: 50
+      sp_attack: 50
     },
     description: "Non è uno squalo, non è un delfino, sa solo quello che non è"
   },
@@ -248,9 +248,9 @@ const allPokemon = [
       hp: 60,
       attack: 60,
       defense: 60,
-      sp_attack: 60,
+      speed: 60,
       sp_defense: 60,
-      speed: 60
+      sp_attack: 60
     },
     description: "Utilizza il secondo paio di occhi per ottimizzare la vista periferica e non farsi cogliere impreparato da quei pochi predatori che osano attaccarlo"
   },
@@ -260,12 +260,12 @@ const allPokemon = [
     types: ["acqua", "spettro"],
     image: "images/werejaws.jpeg", // 👈 minuscolo
     stats: {
-      hp: 70,
+      hp: 65,
       attack: 75,
-      defense: 70,
-      sp_attack: 70,
-      sp_defense: 70,
-      speed: 70
+      defense: 65,
+      speed: 65,
+      sp_defense: 65,
+      sp_attack: 65
     },
     description: "...Sharknado? Davvero??"
   },
@@ -278,9 +278,9 @@ const allPokemon = [
       hp: 40,
       attack: 5,
       defense: 50,
-      sp_attack: 70,
+      speed: 75,
       sp_defense: 60,
-      speed: 75
+      sp_attack: 70
     },
     description: "Miiiiiiiiii, Mi Mi Mi"
   },
@@ -293,9 +293,9 @@ const allPokemon = [
       hp: 50,
       attack: 5,
       defense: 50,
-      sp_attack: 80,
+      speed: 90,
       sp_defense: 60,
-      speed: 90
+      sp_attack: 80
     },
     description: "Oiiiiiiiiiii, Oi Oi Oi"
   },
@@ -305,12 +305,12 @@ const allPokemon = [
     types: ["coleottero", "folletto"],
     image: "images/fatitoille.jpeg", // 👈 minuscolo
     stats: {
-      hp: 55,
-      attack: 5,
+      hp: 65,
+      attack: 15,
       defense: 55,
-      sp_attack: 95,
+      speed: 100,
       sp_defense: 65,
-      speed: 95
+      sp_attack: 100
     },
     description: "Goh Goh Goh"
   },
@@ -323,9 +323,9 @@ const allPokemon = [
       hp: 60,
       attack: 45,
       defense: 60,
-      sp_attack: 25,
+      speed: 40,
       sp_defense: 50,
-      speed: 40
+      sp_attack: 25
     },
     description: "Adora farsi i fatti suoi, e giocare col cristallo verde che tiene sempre con sé"
   },
@@ -338,9 +338,9 @@ const allPokemon = [
       hp: 80,
       attack: 60,
       defense: 70,
-      sp_attack: 25,
+      speed: 45,
       sp_defense: 50,
-      speed: 45
+      sp_attack: 25
     },
     description: "Quando gioca a nascondino tenta di sembrare un cespuglio accovacciandosi ma viene tradito sempre dalle corna di smeraldo, e dal fatto che sia fatto di rocce poco nascondibili"
   },
@@ -353,9 +353,9 @@ const allPokemon = [
       hp: 100,
       attack: 75,
       defense: 80,
-      sp_attack: 25,
+      speed: 50,
       sp_defense: 55,
-      speed: 50
+      sp_attack: 40
     },
     description: "Viene spesso braccato dai cacciatori intenti a vendere i costosissimi bonsai che gli crescono sulla schiena, ma non sono in molti a poter raccontare di esserci riusciti"
   },
@@ -367,10 +367,10 @@ const allPokemon = [
     stats: {
       hp: 80,
       attack: 40,
-      defense: 70,
-      sp_attack: 40,
-      sp_defense: 80,
-      speed: 60
+      defense: 85,
+      speed: 60,
+      sp_defense: 95,
+      sp_attack: 40
     },
     description: "Consegna approviggionamenti con lo stesso affetto di una mamma e dispensa saggi consigli con lo stesso savoir faire di un papà"
   },
@@ -381,11 +381,11 @@ const allPokemon = [
     image: "images/obsawk.jpeg", // 👈 minuscolo
     stats: {
       hp: 60,
-      attack: 80,
+      attack: 95,
       defense: 40,
-      sp_attack: 70,
+      speed: 80,
       sp_defense: 40,
-      speed: 80
+      sp_attack: 85
     },
     description: "Un beawings con la vergarite tira fuori il peggio di sé, tant'è che è lui stesso a beneficiare te lu mestulu te pasuli "
   },
