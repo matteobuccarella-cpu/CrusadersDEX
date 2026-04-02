@@ -23,16 +23,32 @@ button:hover {
 }
 
 .card {
-  padding: 25px;
-  margin: 20px auto;
-  border-radius: 25px;
-  width: 350px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-  color: white;
+  display: flex;
+  gap: 30px;
+  width: 900px;
+  max-width: 95%;
+  margin: auto;
+}
+
+.left {
+  flex: 1;
+  text-align: center;
+}
+
+.right {
+  flex: 1;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+  }
 }
 
 h1 {
-  margin-bottom: 5px;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 #id {
@@ -41,10 +57,14 @@ h1 {
 }
 
 img {
-  width: 180px;
-  height: 180px;
+  width: 260px;
+  max-width: 90%;
+  height: auto;
+  display: block;
+  margin: 60px auto; /* spazio scritte */
   object-fit: contain;
-  margin-bottom: 10px;
+  transform: scale(1.25);
+  margin-top: -10px;
 }
 
 /* TIPI */
@@ -101,8 +121,20 @@ img {
   font-size: 16px;
 }
 
+#overall {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
 #prev:hover, #next:hover {
   background: white;
+}
+
+#statsChart {
+  width: 320px !important;
+  height: 320px !important;
+  margin: 20px auto;
+  display: block;
 }
 
 /* 🎨 COLORI CARD */
