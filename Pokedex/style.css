@@ -65,7 +65,8 @@ input, select {
 #startMessage {
   display: inline-block;
   white-space: nowrap;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  opacity: 0;
 }
 
 /* FRECCIA POSIZIONATA RELATIVAMENTE ALLA FRASE */
