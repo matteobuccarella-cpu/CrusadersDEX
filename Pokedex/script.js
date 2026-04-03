@@ -3,6 +3,8 @@ const searchInput = document.getElementById("search");
 const typeFilter = document.getElementById("typeFilter");
 const sortSelect = document.getElementById("sort");
 const startMessage = document.getElementById("startMessage");
+const statSort = document.getElementById("statSort");
+const orderSort = document.getElementById("orderSort");
 const suggestionsBox = document.getElementById("suggestions");
 const noResults = document.getElementById("noResults");
 
@@ -26,6 +28,7 @@ const typeMap = {
   folletto: "fairy",
   acciaio: "steel"
 };
+
 let hasInteracted = false;
 
 
@@ -47,7 +50,7 @@ function populateTypes() {
 
 
 // 🎨 RENDER
-function renderPokemon(list) {
+function renderPokemon(list, statValue = "") {
   pokedex.innerHTML = "";
 
   list.forEach(data => {
@@ -80,6 +83,71 @@ function renderPokemon(list) {
     div.appendChild(img);
     div.appendChild(types);
 
+   // 🔥 MINI BARRA STAT
+    if (statValue) {
+      let value;
+
+      if (statValue === "overall") {
+        value = Object.values(data.stats)
+          .reduce((a, b) => a + b, 0);
+      } else {
+        value = data.stats[statValue];
+      }
+
+      const wrapper = document.createElement("div");
+      wrapper.classList.add("stat-wrapper");
+
+      const barContainer = document.createElement("div");
+      barContainer.classList.add("stat-bar-container");
+
+      const bar = document.createElement("div");
+      bar.classList.add("stat-bar");
+
+      let percent;
+       if (statValue === "overall") {
+         percent = Math.min((value / 450) * 100, 100);
+       } else {
+         percent = Math.min((value / 100) * 100, 100);
+       }
+       bar.style.width = "0%";
+       setTimeout(() => {
+         bar.style.width = percent + "%";
+       }, 50);
+
+   // 🔥 COLORI
+   if (statValue === "overall") {
+      if (value <= 300) {
+        bar.style.background = "#e74c3c";
+      } else if (value <= 360) {
+        bar.style.background = "#f39c12";
+      } else if (value <= 420) {
+        bar.style.background = "#27ae60";
+      } else {
+        bar.style.background = "#3498db";
+      }
+    } else {
+      if (value < 40) {
+        bar.style.background = "#e74c3c";
+      } else if (value < 70) {
+        bar.style.background = "#f39c12";
+      } else if (value < 100) {
+        bar.style.background = "#27ae60";
+      } else {
+        bar.style.background = "#3498db";
+      }
+    }
+
+      const number = document.createElement("span");
+      number.classList.add("stat-number");
+      number.textContent = value;
+
+      barContainer.appendChild(bar);
+      wrapper.appendChild(barContainer);
+      wrapper.appendChild(number);
+
+      div.appendChild(wrapper);
+    }
+
     pokedex.appendChild(div);
   });
 }
@@ -89,10 +157,17 @@ function applyFilters() {
   const searchValue = searchInput.value.toLowerCase();
   const selectedType = typeFilter.value;
   const sortValue = sortSelect.value;
+  const statValue = statSort.value;
+  const order = orderSort.value; 
 
-startMessage.style.display = "none";
+  const hasType = typeFilter.value !== "";
+  const hasSearch = searchInput.value.trim() !== "";
 
-  startMessage.style.display = "none";
+  if (hasType || hasSearch) {
+    startMessage.style.display = "none";
+  } else {
+    startMessage.style.display = "block";
+  }
 
   let filtered = allPokemon.filter(p => {
     const matchesName = p.name.toLowerCase().includes(searchValue);
@@ -108,13 +183,37 @@ startMessage.style.display = "none";
     noResults.style.display = "none";
   }
 
-  if (sortValue === "name") {
-    filtered.sort((a, b) => a.name.localeCompare(b.name));
-  } else {
-    filtered.sort((a, b) => a.id - b.id);
-  }
+  function applyOrder(a, b) {
+  return order === "asc" ? a - b : b - a;
+}
 
-  renderPokemon(filtered);
+ if (statValue) {
+  if (statValue === "overall") {
+    filtered.sort((a, b) => {
+      const totalA = Object.values(a.stats).reduce((x, y) => x + y, 0);
+      const totalB = Object.values(b.stats).reduce((x, y) => x + y, 0);
+      return applyOrder(totalA, totalB);
+    });
+  } else {
+    filtered.sort((a, b) => {
+      return applyOrder(a.stats[statValue], b.stats[statValue]);
+    });
+  }
+} else {
+  if (sortValue === "name") {
+    filtered.sort((a, b) => {
+      return order === "asc"
+        ? a.name.localeCompare(b.name)
+        : b.name.localeCompare(a.name);
+    });
+  } else {
+    filtered.sort((a, b) => {
+      return applyOrder(a.id, b.id);
+    });
+  }
+}
+
+ renderPokemon(filtered, statSort.value);
 }
 
 
@@ -122,7 +221,6 @@ startMessage.style.display = "none";
 function capitalize(text) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
-
 
 // 🔎 AUTOCOMPLETE
 function showSuggestions(value) {
@@ -161,16 +259,20 @@ typeFilter.addEventListener("change", () => {
   applyFilters();
 });
 
-typeFilter.addEventListener("click", () => {
-  hasInteracted = true;
-  applyFilters();
-});
-
 sortSelect.addEventListener("change", () => {
   hasInteracted = true;
   applyFilters();
 });
 
+statSort.addEventListener("change", () => {
+  sortSelect.value = "id"; // reset
+  hasInteracted = true;
+  applyFilters();
+});
+
+orderSort.addEventListener("change", () => {
+  applyFilters();
+});
 
 // 🚀 AVVIO
 populateTypes();
@@ -181,3 +283,30 @@ document.addEventListener("click", (e) => {
     suggestionsBox.innerHTML = "";
   }
 });
+
+// ALLINEAMENTO MESSAGGIO
+function alignMessageToFilter() {
+  const typeFilter = document.getElementById("typeFilter");
+  const message = document.getElementById("startMessage");
+
+  if (!typeFilter || !message) return;
+
+  const filterRect = typeFilter.getBoundingClientRect();
+  const messageRect = message.getBoundingClientRect();
+
+  // centro del filtro
+  const filterCenter = filterRect.left + filterRect.width / 2;
+
+  // posizione della freccia (fine del messaggio)
+  const arrowX = messageRect.right;
+
+  // calcolo spostamento
+  const shift = filterCenter - arrowX;
+
+  // applico solo uno spostamento orizzontale
+  message.style.transform = `translateX(${shift}px)`;
+}
+
+// aggiorna posizione
+window.addEventListener("load", alignMessageToFilter);
+window.addEventListener("resize", alignMessageToFilter);
