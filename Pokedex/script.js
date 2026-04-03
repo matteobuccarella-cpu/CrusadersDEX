@@ -105,9 +105,9 @@ function renderPokemon(list, statValue = "") {
 
       let percent;
        if (statValue === "overall") {
-         percent = Math.min((value / 450) * 100, 100);
+         percent = Math.min((value / 450) * 100, 100); //basta aumentare questo valore in futuro
        } else {
-         percent = Math.min((value / 100) * 100, 100);
+         percent = Math.min((value / 100) * 100, 100); //same shit af
        }
        bar.style.width = "0%";
        setTimeout(() => {
@@ -305,6 +305,9 @@ function alignMessageToFilter() {
 
   // applico solo uno spostamento orizzontale
   message.style.transform = `translateX(${shift}px)`;
+
+  // RICOMPARE, TA-DAAAAAAAAN
+  message.style.opacity = "1"; 
 }
 
 // aggiorna posizione
