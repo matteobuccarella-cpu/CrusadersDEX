@@ -11,6 +11,7 @@
   <div class="controls">
     <input type="text" id="search" placeholder="Cerca creaturina..." />
     <div id="suggestions"></div>
+
     <select id="typeFilter">
       <option value="">Tutti i tipi</option>
     </select>
@@ -19,19 +20,34 @@
       <option value="id">Numero</option>
       <option value="name">Nome A-Z</option>
     </select>
-  </div>
 
-  <p id="startMessage">
-  Cerca un cretino o seleziona un tipo dal filtro <span class="arrow">👆</span>
-</p>
+<select id="statSort">
+  <option value="">Reset filtro</option>
+  <option value="hp">HP</option>
+  <option value="attack">Attacco</option>
+  <option value="defense">Difesa</option>
+  <option value="sp_attack">Attacco Sp.</option>
+  <option value="sp_defense">Difesa Sp.</option>
+  <option value="speed">Velocità</option>
+  <option value="overall">Overall</option>
+ </select>
+
+<select id="orderSort">
+  <option value="desc">⬇️Decrescente</option>
+  <option value="asc">⬆️Crescente</option>
+</select>
+
+</div>
+
+ <div class="message-container">
+   <p id="startMessage">
+    Cerca un cretino o seleziona un tipo dal filtro <span class="arrow">👆</span>
+  </p>
+</div>
+
   <p id="noResults" style="display:none;">Nessuno stronzetto trovato</p>
 
   <div id="pokedex"></div>
-
-  <script src="pokemon.js"></script>
-  <script src="script.js"></script>
-</body>
-</html>
 
   <script src="pokemon.js"></script>
   <script src="script.js"></script>
