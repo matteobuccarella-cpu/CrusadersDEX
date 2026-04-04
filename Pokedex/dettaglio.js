@@ -145,9 +145,25 @@ options: {
     card.classList.add(typeMap[mainType] || mainType);
 
 // 🧾 DATI BASE
-    document.getElementById("name").textContent = capitalize(data.name);
-    document.getElementById("id").textContent = "#" + data.id;
-    document.getElementById("img").src = data.image;
+document.getElementById("name").textContent = capitalize(data.name);
+
+// 🆔 ID FIX COMPLETO
+const idEl = document.getElementById("id");
+idEl.textContent = "#" + String(data.id).padStart(3, "0");
+
+// reset classi
+idEl.classList.remove("gold-metal", "gold-bright");
+
+// colori come index
+const darkTypes = ["dark", "ghost", "dragon", "buio", "spettro", "drago"];
+
+if (darkTypes.includes(data.types[0])) {
+  idEl.classList.add("gold-bright");
+} else {
+  idEl.classList.add("gold-metal");
+}
+
+document.getElementById("img").src = data.image;;
 
 // 🎨 TIPI
     const typesDiv = document.getElementById("types");
