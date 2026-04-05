@@ -211,10 +211,14 @@ img {
 }
 
 .dark *,
+.buio *,
 .ghost *,
-.dragon * {
+.spettro *,
+.dragon *,
+.drago * {
   color: white;
 }
+
 /* GRAFICO */
 canvas {
   margin-top: 20px;
