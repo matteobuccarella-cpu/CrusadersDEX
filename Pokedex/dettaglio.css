@@ -210,16 +210,14 @@ img {
   font-size: 14px;
 }
 
-.dark *,
-.buio *,
-.ghost *,
-.spettro *,
-.dragon *,
-.drago * {
-  color: white;
-}
-
 /* GRAFICO */
 canvas {
   margin-top: 20px;
+}
+
+/* 🔥 FORZA TESTO BIANCO PER TIPI SCURI */
+.type.dark,
+.type.dragon,
+.type.ghost {
+  color: white !important;
 }
