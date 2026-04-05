@@ -172,7 +172,7 @@ img {
 .card.fighting { background: linear-gradient(135deg, #f6d365, #fda085); }
 .card.psychic { background: linear-gradient(135deg, #fbc2eb, #e91e63); }
 .card.ice { background: linear-gradient(135deg, #d4fc79, #96e6a1); }
-.card.dragon { background: linear-gradient(135deg, #a18cd1, #673ab7); }
+.card.dragon { background: linear-gradient(135deg, #a18cd1, #673ab7); color: white; }
 .card.dark {background: linear-gradient(135deg, #5a5a5a, #2f2f2f); color: white; }
 .card.fairy { background: linear-gradient(135deg, #ffdde1, #ee9ca7); }
 .card.normal { background: #ddd; color: black; }
@@ -182,7 +182,7 @@ img {
 .card.bug { background: linear-gradient(135deg, #f4e7a1, #d6c86b); color: black; }
 .card.flying { background: #89f7fe; color: black; }
 .card.steel { background: #bdc3c7; color: black; }
-.card.ghost { background: #5f2c82; }
+.card.ghost { background: #5f2c82; color: white; }
 
 /* 🎯 COLORI TIPI */
 .type.fire { background: #ff1635; }
