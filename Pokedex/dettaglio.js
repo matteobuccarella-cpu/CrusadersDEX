@@ -201,6 +201,13 @@ document.getElementById("img").src = data.image;;
       statsDiv.appendChild(statEl);
     }
 
+  // 🔥 FIX colore stats DOPO creazione
+  if (isGhost || isDark) {
+    document.querySelectorAll(".stat p").forEach(el => {
+      el.style.color = "#fff";
+    });
+  }
+    
 // ⚡ ANIMAZIONE BARRE
     setTimeout(() => {
       const fills = document.querySelectorAll(".fill");
