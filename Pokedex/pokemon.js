@@ -42,7 +42,7 @@ const allPokemon = [
       sp_defense: 60,
       sp_attack: 40
     },
-    description: "Ha i pugni nelle mani e il potere dell'odio nel cuore, ma almeno sa cucinare una carbonara fantastica"
+    description: "Ha i pugni nelle mani e l'odio nel cuore, però sa cucinare una carbonara fantastica"
   },
 {
     id: 4,
@@ -57,7 +57,7 @@ const allPokemon = [
       sp_defense: 50,
       sp_attack: 70
     },
-    description: "Non lasciatevi incantare dai suoi modi graziosi, o potrebbe essere l'ultima cosa che vedrete"
+    description: "Non lasciatevi incantare dai suoi modi graziosi, o potrebbero essere l'ultima cosa che vedrete"
   },
 {
     id: 5,
@@ -87,7 +87,7 @@ const allPokemon = [
       sp_defense: 70,
       sp_attack: 65
     },
-    description: "Con la sola forza del pensiero riesce a calmare qualsiasi cuore, tranne il suo"
+    description: "Con la sola forza del pensiero riesce a calmare qualsiasi cuore irrequieto, tranne il suo"
   },
 {
     id: 7,
@@ -102,7 +102,7 @@ const allPokemon = [
       sp_defense: 85,
       sp_attack: 75
     },
-    description: "Può capitare a molti esploratori di scambiare le sfere psichiche che gli ruotano attorno per delle meteore, a ragion veduta"
+    description: "Il problema sorge quando al cuore irrequieto fai pure girare le palle (di fuoco)"
   },
 {
     id: 8,
