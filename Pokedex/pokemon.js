@@ -99,8 +99,8 @@ const allPokemon = [
       attack: 35,
       defense: 60,
       speed: 70,
-      sp_defense: 85,
-      sp_attack: 75
+      sp_defense: 65,
+      sp_attack: 95
     },
     description: "Il problema sorge quando al cuore irrequieto fai pure girare le palle (di fuoco)"
   },
