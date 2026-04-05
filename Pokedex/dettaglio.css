@@ -210,6 +210,11 @@ img {
   font-size: 14px;
 }
 
+.dark *,
+.ghost *,
+.dragon * {
+  color: white;
+}
 /* GRAFICO */
 canvas {
   margin-top: 20px;
