@@ -72,12 +72,11 @@ const gridColor = (isDark || isGhost)
 
 const borderWidth = isFighting ? 3 : 1.5;
 
-const textColor = isGhost ? "#fff" : "#000";
-     document.getElementById("description").style.color = textColor;
-     document.querySelectorAll(".stat p").forEach(el => {
-     el.style.color = textColor;
-});
-
+const textColor = (isGhost || isDark) ? "#fff" : "#000";
+  
+// descrizione
+document.getElementById("description").style.color = textColor;
+  
 // titolo "Statistiche"
 document.querySelector(".right h2").style.color = textColor;
 
